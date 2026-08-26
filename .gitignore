@@ -16,3 +16,7 @@ local.properties
 
 # Downloaded TMDB poster artwork (not for public redistribution)
 /app/src/main/res/drawable-nodpi/poster_2026_*.jpg
+
+# Local Firebase Android configuration
+/app/google-services.json
+/app/src/*/google-services.json
