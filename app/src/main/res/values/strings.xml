@@ -1,3 +1,23 @@
 <resources>
     <string name="app_name">Popcorn Route</string>
+    <string name="sign_up_eyebrow">POPCORN ROUTE</string>
+    <string name="sign_up_title">Create your account</string>
+    <string name="sign_up_subtitle">Start building your perfect movie night.</string>
+    <string name="sign_up_name_label">Name</string>
+    <string name="sign_up_name_placeholder">Your full name</string>
+    <string name="sign_up_email_label">Email</string>
+    <string name="sign_up_email_placeholder">you@example.com</string>
+    <string name="sign_up_password_label">Password</string>
+    <string name="sign_up_password_placeholder">At least 8 characters</string>
+    <string name="sign_up_show_password">Show password</string>
+    <string name="sign_up_hide_password">Hide password</string>
+    <string name="sign_up_action">Create account</string>
+    <string name="sign_up_existing_account">Already have an account?</string>
+    <string name="sign_up_sign_in_action">Sign in</string>
+    <string name="sign_in_title">Welcome back</string>
+    <string name="sign_in_subtitle">Pick up where your movie night left off.</string>
+    <string name="sign_in_password_placeholder">Your password</string>
+    <string name="sign_in_action">Sign in</string>
+    <string name="sign_in_no_account">Don’t have an account?</string>
+    <string name="sign_in_sign_up_action">Sign up</string>
 </resources>
