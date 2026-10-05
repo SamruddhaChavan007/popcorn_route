@@ -10,5 +10,14 @@ sealed interface DebugLauncherKey : NavKey {
     data object CarouselView : DebugLauncherKey
 
     @Serializable
+    data object DiscoveryFilterChips : DebugLauncherKey
+
+    @Serializable
+    data object FlowingPosterBackground : DebugLauncherKey
+
+    @Serializable
+    data object PullToRefresh : DebugLauncherKey
+
+    @Serializable
     data object TopTenMedia : DebugLauncherKey
 }

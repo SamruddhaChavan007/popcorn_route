@@ -198,7 +198,7 @@ private fun CarouselCard(
 }
 
 @Composable
-private fun CarouselIndicator(
+internal fun CarouselIndicator(
     pageCount: Int,
     selectedPage: Int,
     modifier: Modifier = Modifier,

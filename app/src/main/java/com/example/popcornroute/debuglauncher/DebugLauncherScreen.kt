@@ -19,6 +19,9 @@ import com.google.firebase.auth.auth
 @Composable
 fun DebugLauncherScreen(
     onCarouselViewClick: () -> Unit,
+    onDiscoveryFilterChipsClick: () -> Unit,
+    onFlowingPosterBackgroundClick: () -> Unit,
+    onPullToRefreshClick: () -> Unit,
     onTopTenMediaClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -39,6 +42,21 @@ fun DebugLauncherScreen(
         DebugLauncherButton(
             text = "Carousel View",
             onClick = onCarouselViewClick,
+        )
+
+        DebugLauncherButton(
+            text = "Discovery Filter Chips",
+            onClick = onDiscoveryFilterChipsClick,
+        )
+
+        DebugLauncherButton(
+            text = "Flowing Poster Background",
+            onClick = onFlowingPosterBackgroundClick,
+        )
+
+        DebugLauncherButton(
+            text = "Pull to Refresh",
+            onClick = onPullToRefreshClick,
         )
 
         DebugLauncherButton(
