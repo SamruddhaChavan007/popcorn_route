@@ -68,6 +68,10 @@ hilt {
     enableAggregatingTask = true
 }
 
+ksp {
+    arg("room.schemaLocation", "$projectDir/schemas")
+}
+
 dependencies {
     implementation(platform(libs.androidx.compose.bom))
     implementation(platform(libs.firebase.bom))
@@ -92,10 +96,12 @@ dependencies {
     implementation(libs.firebase.auth)
     implementation(libs.firebase.storage)
     implementation(libs.hilt.android)
+    implementation(libs.androidx.room.runtime)
     implementation(libs.kotlinx.serialization.core)
     implementation(libs.kotlinx.coroutines.play.services)
     implementation(libs.timber)
     ksp(libs.hilt.compiler)
+    ksp(libs.androidx.room.compiler)
     testImplementation(libs.junit)
     testImplementation(libs.robolectric)
     testImplementation(libs.mockwebserver)

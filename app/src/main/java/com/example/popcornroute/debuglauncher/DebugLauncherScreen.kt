@@ -23,6 +23,7 @@ fun DebugLauncherScreen(
     onFlowingPosterBackgroundClick: () -> Unit,
     onPullToRefreshClick: () -> Unit,
     onTopTenMediaClick: () -> Unit,
+    onUserLibraryClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val authApi = Firebase.auth
@@ -62,6 +63,11 @@ fun DebugLauncherScreen(
         DebugLauncherButton(
             text = "Top 10 Movies & Shows",
             onClick = onTopTenMediaClick,
+        )
+
+        DebugLauncherButton(
+            text = "User Library",
+            onClick = onUserLibraryClick,
         )
 
         DebugLauncherButton(

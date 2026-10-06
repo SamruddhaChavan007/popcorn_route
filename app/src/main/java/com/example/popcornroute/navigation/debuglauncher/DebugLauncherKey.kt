@@ -20,4 +20,7 @@ sealed interface DebugLauncherKey : NavKey {
 
     @Serializable
     data object TopTenMedia : DebugLauncherKey
+
+    @Serializable
+    data object UserLibrary : DebugLauncherKey
 }

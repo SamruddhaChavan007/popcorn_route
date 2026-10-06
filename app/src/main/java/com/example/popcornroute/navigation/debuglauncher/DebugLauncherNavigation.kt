@@ -8,6 +8,7 @@ import com.example.popcornroute.debuglauncher.DiscoveryFilterChipsScreen
 import com.example.popcornroute.debuglauncher.FlowingPosterBackgroundScreen
 import com.example.popcornroute.debuglauncher.PullToRefreshScreen
 import com.example.popcornroute.debuglauncher.TopTenMediaScreen
+import com.example.popcornroute.debuglauncher.UserLibraryDebugScreen
 import com.example.popcornroute.navigation.mainapp.keys.BottomNavigationKey
 import com.example.popcornroute.navigation.transitions.TabRootMetadata
 
@@ -32,6 +33,9 @@ fun EntryProviderScope<NavKey>.debugLauncherEntries(
             onTopTenMediaClick = {
                 navigate(DebugLauncherKey.TopTenMedia)
             },
+            onUserLibraryClick = {
+                navigate(DebugLauncherKey.UserLibrary)
+            },
         )
     }
 
@@ -53,5 +57,9 @@ fun EntryProviderScope<NavKey>.debugLauncherEntries(
 
     entry<DebugLauncherKey.TopTenMedia> {
         TopTenMediaScreen()
+    }
+
+    entry<DebugLauncherKey.UserLibrary> {
+        UserLibraryDebugScreen()
     }
 }
