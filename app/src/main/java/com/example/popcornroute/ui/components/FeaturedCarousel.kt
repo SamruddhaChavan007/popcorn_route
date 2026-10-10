@@ -279,9 +279,9 @@ private fun FeaturedCarouselCard(
                                 Icons.Outlined.BookmarkBorder
                             },
                             contentDescription = if (saved) {
-                                "Remove ${item.title} from collections"
+                                "Remove ${item.title} from Watchlist"
                             } else {
-                                "Save ${item.title} to collections"
+                                "Add ${item.title} to Watchlist"
                             },
                         )
                     }

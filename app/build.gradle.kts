@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
@@ -6,6 +8,16 @@ plugins {
     alias(libs.plugins.hilt)
     alias(libs.plugins.ksp)
 }
+
+val localProperties = Properties().apply {
+    val propertiesFile = rootProject.file("local.properties")
+    if (propertiesFile.exists()) {
+        propertiesFile.inputStream().use(::load)
+    }
+}
+
+fun String.asBuildConfigString(): String =
+    "\"${replace("\\", "\\\\").replace("\"", "\\\"")}\""
 
 android {
     namespace = "com.example.popcornroute"
@@ -21,6 +33,16 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "com.example.popcornroute.HiltTestRunner"
+        buildConfigField(
+            "String",
+            "TMDB_API_KEY",
+            localProperties.getProperty("TMDB_API_KEY", "").asBuildConfigString(),
+        )
+        buildConfigField(
+            "String",
+            "TMDB_READ_ACCESS_TOKEN",
+            localProperties.getProperty("TMDB_READ_ACCESS_TOKEN", "").asBuildConfigString(),
+        )
     }
 
     flavorDimensions += "environment"
@@ -49,6 +71,12 @@ android {
             optimization {
                 enable = false
             }
+        }
+        create("benchmark") {
+            initWith(getByName("release"))
+            signingConfig = signingConfigs.getByName("debug")
+            matchingFallbacks += listOf("release")
+            isDebuggable = false
         }
     }
     compileOptions {
@@ -92,6 +120,7 @@ dependencies {
     implementation(libs.androidx.paging.runtime)
     implementation(libs.coil.compose)
     implementation(libs.coil.network.okhttp)
+    implementation(libs.okhttp)
     implementation(libs.firebase.analytics)
     implementation(libs.firebase.auth)
     implementation(libs.firebase.storage)

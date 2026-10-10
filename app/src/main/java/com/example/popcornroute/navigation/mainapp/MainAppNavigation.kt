@@ -17,7 +17,7 @@ import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
 import androidx.navigation3.ui.NavDisplay
 import com.example.popcornroute.debuglauncher.TestCollectionScreen
 import com.example.popcornroute.debuglauncher.TestProfileScreen
-import com.example.popcornroute.home.presentation.HomeScreen
+import com.example.popcornroute.home.presentation.HomeRoute
 import com.example.popcornroute.navigation.bottomnavigation.bottomDestinations
 import com.example.popcornroute.navigation.debuglauncher.debugLauncherEntries
 import com.example.popcornroute.navigation.mainapp.keys.BottomNavigationKey
@@ -71,7 +71,7 @@ fun MainAppNavigation() {
             ),
             entryProvider = entryProvider {
                 entry<BottomNavigationKey.Home>(metadata = TabRootMetadata) {
-                    HomeScreen()
+                    HomeRoute()
                 }
                 entry<BottomNavigationKey.Collections>(metadata = TabRootMetadata) {
                     TestCollectionScreen()

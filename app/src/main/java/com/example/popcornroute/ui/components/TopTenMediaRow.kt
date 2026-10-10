@@ -37,6 +37,8 @@ fun TopTenMediaRow(
     items: List<TopTenMediaItem>,
     modifier: Modifier = Modifier,
     onItemClick: (TopTenMediaItem) -> Unit = {},
+    onWatchlistClick: (TopTenMediaItem) -> Unit = {},
+    isInWatchlist: (TopTenMediaItem) -> Boolean = { false },
     imageModifier: @Composable (TopTenMediaItem) -> Modifier = { Modifier },
 ) {
     if (items.isEmpty()) return
@@ -58,6 +60,8 @@ fun TopTenMediaRow(
                 TopTenMediaCard(
                     item = item,
                     onClick = { onItemClick(item) },
+                    onWatchlistClick = { onWatchlistClick(item) },
+                    isInWatchlist = isInWatchlist(item),
                     imageModifier = imageModifier(item),
                 )
             }
@@ -69,6 +73,8 @@ fun TopTenMediaRow(
 private fun TopTenMediaCard(
     item: TopTenMediaItem,
     onClick: () -> Unit,
+    onWatchlistClick: () -> Unit,
+    isInWatchlist: Boolean,
     imageModifier: Modifier,
     modifier: Modifier = Modifier,
 ) {
@@ -79,6 +85,8 @@ private fun TopTenMediaCard(
         clickLabel = "Open ${item.title}",
         accessibilityDescription = "Number ${item.rank}, ${item.title}",
         imageModifier = imageModifier,
+        isInWatchlist = isInWatchlist,
+        onWatchlistClick = onWatchlistClick,
         modifier = modifier,
         cardWidth = RankedCardWidth,
         posterWidth = DefaultPosterWidth,

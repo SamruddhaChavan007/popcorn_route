@@ -18,8 +18,12 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Bookmark
+import androidx.compose.material.icons.outlined.BookmarkBorder
 import androidx.compose.material.icons.outlined.Movie
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -28,6 +32,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
@@ -50,6 +55,8 @@ fun MediaPosterRow(
     items: List<MediaPosterItem>,
     modifier: Modifier = Modifier,
     onItemClick: (MediaPosterItem) -> Unit = {},
+    onWatchlistClick: (MediaPosterItem) -> Unit = {},
+    isInWatchlist: (MediaPosterItem) -> Boolean = { false },
     imageModifier: @Composable (MediaPosterItem) -> Modifier = { Modifier },
 ) {
     if (items.isEmpty()) return
@@ -75,6 +82,8 @@ fun MediaPosterRow(
                     clickLabel = "Open ${item.title}",
                     accessibilityDescription = item.title,
                     imageModifier = imageModifier(item),
+                    isInWatchlist = isInWatchlist(item),
+                    onWatchlistClick = { onWatchlistClick(item) },
                 )
             }
         }
@@ -105,6 +114,8 @@ internal fun MediaPosterCard(
     clickLabel: String,
     accessibilityDescription: String,
     imageModifier: Modifier,
+    isInWatchlist: Boolean,
+    onWatchlistClick: () -> Unit,
     modifier: Modifier = Modifier,
     cardWidth: Dp = DefaultPosterWidth,
     posterWidth: Dp = DefaultPosterWidth,
@@ -162,6 +173,15 @@ internal fun MediaPosterCard(
             }
 
             artworkOverlay()
+
+            WatchlistButton(
+                title = title,
+                isInWatchlist = isInWatchlist,
+                onClick = onWatchlistClick,
+                modifier = Modifier
+                    .align(Alignment.BottomEnd)
+                    .padding(8.dp),
+            )
         }
 
         Text(
@@ -177,6 +197,37 @@ internal fun MediaPosterCard(
             minLines = 2,
             maxLines = 2,
             overflow = TextOverflow.Ellipsis,
+        )
+    }
+}
+
+@Composable
+private fun WatchlistButton(
+    title: String,
+    isInWatchlist: Boolean,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    IconButton(
+        onClick = onClick,
+        modifier = modifier.size(40.dp),
+        colors = IconButtonDefaults.iconButtonColors(
+            containerColor = Color.Black.copy(alpha = 0.62f),
+            contentColor = Color.White,
+        ),
+    ) {
+        Icon(
+            imageVector = if (isInWatchlist) {
+                Icons.Filled.Bookmark
+            } else {
+                Icons.Outlined.BookmarkBorder
+            },
+            contentDescription = if (isInWatchlist) {
+                "Remove $title from Watchlist"
+            } else {
+                "Add $title to Watchlist"
+            },
+            modifier = Modifier.size(22.dp),
         )
     }
 }

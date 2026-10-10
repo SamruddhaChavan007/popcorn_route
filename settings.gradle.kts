@@ -24,3 +24,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Popcorn Route"
 include(":app")
+include(":macrobenchmark")
